@@ -1,0 +1,5 @@
+<%= form_for :login, :url=>"/login/index", :method=>"post" do |login_form| %>
+<%= login_form.text_field :username, :required => true, :placeholder=>"Username" %>
+<%= login_form.select :mode, options_for_select([['Yoda', 1], ['Valley Girl', 2], ['Binary Code', 3]]), { :include_blank => 'Select a Dialect' }, :required => true %>
+<%= login_form.submit :value=>"Let us Chat" %>
+<%end%>

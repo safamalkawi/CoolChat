@@ -1,0 +1,9 @@
+// Place all the styles related to the Login controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//
+*{font-size:18px;}
+input[type="submit"]{width:170px;padding:10px;margin:30px 5px}
+input[type="text"]{border-radius:5px;border: 2px solid #CCC;margin:30px 5px;padding:10px;width:300px;}
+select{width: 165px;height:43px;border: 2px solid #ccc;margin:30px 5px}
+option{padding:10px 5px}
