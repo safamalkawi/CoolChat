@@ -1,5 +1,8 @@
-<%= form_for :login, :url=>"/login/index", :method=>"post" do |login_form| %>
-<%= login_form.text_field :username, :required => true, :placeholder=>"Username" %>
-<%= login_form.select :mode, options_for_select([['Yoda', 'yoda'], ['Valley Girl', 'valley'], ['Binary Code', 'binary']]), { :include_blank => 'Select a Dialect' }, :required => true %>
-<%= login_form.submit :value=>"Let us Chat" %>
-<%end%>
+<div id='login-wrapper'>
+    <div class= "header"><h1>Dude Chat</h1><img src="assets/logo.ico" alt="logo"></div>
+    <%= form_for :login, :url=>"/login/index", :method=>"post" do |login_form| %>
+        <%= login_form.text_field :username, :required => true, :placeholder=>"Username" %>
+        <%= login_form.select :mode, options_for_select([['Yoda', 'yoda'], ['Valley Girl', 'valley'], ['Binary Code', 'binary']]), { :include_blank => 'Select a Dialect' }, :required => true %>
+        <%= login_form.submit :value=>"Start Chat", :data => { :disable_with =>"Fun Starts"}%>
+    <%end%>
+</div>

@@ -1,50 +1,15 @@
-<html>
-    <body>
-        <div id="chat-text" style="border:1px solid black;float: left;width: 1000px;height: 450px;">
-        </div>
-				<div id="users-list" style="width: 250px;border: 1px solid black;float: right;height: 500px;">
-				</div>
-				<div id="chat-form">
-					<form id="input-form" class="form-inline">
-						<input id="input-text" type="text" class="form-control" placeholder="Enter chat text here!" autofocus />
-						<button class="btn btn-primary" type="submit">Send</button>
-					</form>
-				</div>
-        <script>
-					var scheme   = "ws://";
-					var uri      = scheme + window.document.location.host + "/";
-					var ws       = new WebSocket(uri);
-
-					$(document).ready(function() {
-						$("#input-form").on("submit", function(event) {
-							event.preventDefault();
-							var text   = $("#input-text")[0].value;
-							ws.send(JSON.stringify({
-								"action": "message",
-								"message": text
-							}));
-							$("#input-text")[0].value = "";
-						});
-						ws.onopen = function(event) {
-							ws.send(JSON.stringify({
-								"action": "login",
-								"username": "<%= @current_user %>",
-								"chat_mode": "<%= @chat_mode %>"
-							}));
-						};
-						ws.onmessage = function(message) {
-							var data = JSON.parse(message.data);
-							if(data.action == "message") {
-								$("#chat-text").append("<div class='panel panel-default'><div class='panel-heading'>" + data.sender + "</div><div class='panel-body'>" + data.msg + "</div></div>");
-								$("#chat-text").stop().animate({
-									scrollTop: $('#chat-text')[0].scrollHeight
-								}, 800);
-							} else if(data.action == "join") {
-								$('#users-list').append("<div>" + data.username + "</div>");
-								$("#chat-text").append("<div class='panel panel-default'><div class='panel-heading'>" + data.username + " just joined the conversation</div></div>");
-							}
-						};
-					});
-        </script>
-    </body>
-</html>
+<script type="text/javascript">
+    var currentUsername = "<%= @current_user %>";
+    var chatMode = "<%= @chat_mode %>";
+</script>
+<div class= "header"><h1>Dude Chat</h1><img src="assets/logo.ico" alt="logo"></div>
+<div id="wrapper">
+    <div id="chat-text" ></div>
+    <div id="users-list"></div>
+    <div id="chat-form">
+        <form id="input-form" class="form-inline">
+            <input type="text" id="input-text" class="form-conrol" placeholder="Enter chat text here!" autofocus/>
+            <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+    </div>
+</div>
