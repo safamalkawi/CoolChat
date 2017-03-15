@@ -26,7 +26,6 @@ class ChatHandler
       ws.on :close do |event|
         p [:close, ws.object_id, event.code, event.reason]
         @backend.connectionClosed(ws)
-        ws = nil
       end
       ws.rack_response
     else

@@ -11,12 +11,12 @@ body{margin:20px 0 0 30px;font-size:20px;}
 .panel{margin:3px 0;font-size:16px}
 .panel-heading{float:left;margin-right:11px;margin-top:10px;color: cornflowerblue;font-family: inherit;}
 #join-header{margin:0 0 6px 0;}
-.panel-body{color:black;float:left;border-radius: 3px;border: 1px solid #F1F2F4;padding: 4px;background-color: #F1F2F4; max-width: 90%}
-.panel-body > p { font-size: 12px; text-align: right; margin:7px 0 0 0 }
+.panel-body{color:black;float:left;border-radius: 3px;border: 1px solid #F1F2F4;padding: 4px;background-color: #F1F2F4; word-break: break-all;max-width: 90%}
+.panel-body > p { font-size: 12px; text-align: right; margin:7px 0 0 0;word-break: break-all; }
 #users-list{width: 10%;border: 1px solid #ccc;float: left;height: 400px;overflow: scroll;margin: 10px;padding: 10px;border-radius: 5px;}
 #users-list div {}
-#users-list div.username { float: left; margin-left: 10px; padding-top: 5px }
-#users-list img{display: inline-block; float: left; width:30px; height:30px}
+#users-list div.username { float: left; margin-left: 10px; padding-top: 10px }
+#users-list img{display: inline-block; float: left; width:30px; height:30px;margin: 5px 0;}
 #input-form input[type=text]{font-size:16px;width: 71%;float: left;border-radius: 5px;margin-right: 10px;min-height: 30px;padding: 10px;overflow-y: scroll;}
 #input-form button{font-size:20px;float: left;margin-top:5px;width: 120px;height: 46px;border-radius: 7px;background-color: cornflowerblue;color: aliceblue;}
 .panel img{float: left;height: 10px;margin-top:15px;margin-right: -2px;}

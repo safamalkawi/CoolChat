@@ -47,6 +47,7 @@ class ChatBackend
   end
 
   def loginUser(ws, username, chatMode)
+    p "Login user ", username
     if userExists(username)
       ws.send({
         "action": "logout",
@@ -56,8 +57,12 @@ class ChatBackend
     # Record the newly logged in user
     user = User.new(username, chatMode, ws)
     @clients[ws.object_id] = user
+
+    p "Registered user object", user.username
+
     # Notify other users about the new user
     @clients.each_key do |client_id|
+      p "Telling %s about user %s" % [@clients[client_id].username, username]
       @clients[client_id].socket.send({
         "action": "join",
         "username": username,
@@ -67,6 +72,7 @@ class ChatBackend
       if client_id == ws.object_id
         next # skip telling myself about myself
       end
+      p "Telling %s about user %s" % [username, @clients[client_id].username]
       ws.send({
         "action": "join",
         "username": @clients[client_id].username,
